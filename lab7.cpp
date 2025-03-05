@@ -132,16 +132,25 @@ char testdates[][16] = {
 //========================================================
 int main(int argc, char **argv)
 {
-    /*if (argc >= 3){
+    if (argc >= 3){
         Date date1(argv[1]);
         Date date2(argv[2]);
-        if(argv[1] > argv[2]){
-            int count2 = twoDates(argv[1], argv[2]);
-            cout << count2;
+        int count2 = 0;
+        cout << "Days between " << (Date)argv[1] << " and " << (Date)argv[2] << " is: "; 
+            count2 = twoDates(argv[1], argv[2]);     
+            if (count2 >= 4000000) {
+            count2 = twoDates(argv[2], argv[1]);
+            cout << count2 << " (Backwards)" <<endl;
+            //++noverflows;
+            //cout << "  <--- error ";
             exit(0);
         }
-    } */
-
+            else{
+            count2 = twoDates(argv[1], argv[2]);    
+            cout << count2 << endl;
+            exit(0);
+    }
+    } 
     cout << "\nCalculate days between dates.\n" << endl;
     char d1[100], d2[100];
     int noverflows = 0;
@@ -155,10 +164,7 @@ int main(int argc, char **argv)
         Date date2(d2);
         int count;
            
-            count = twoDates(d1, d2);    
-            //cout << count << "";
-        
-         
+            count = twoDates(d1, d2);     
             if (count >= 4000000) {
             count = twoDates(d2, d1);
             cout << count << " (Backwards)";
